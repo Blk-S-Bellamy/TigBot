@@ -45,6 +45,7 @@ program_info = f"""
 Welcome_Channel_id = int(1206448622816854026)
 # guild id numbers
 guild_id_lst = [1206163627841818676]
+
 # voice channel people join to be made their own vc
 vc_creation_id = int(1206425843388256306)
 vc_creation_category = "Voice Channels"
@@ -52,13 +53,13 @@ vc_creation_category = "Voice Channels"
 vc_pre_decor = "|"
 # the text before the vc creators name in the title of new vc "<here>Balkon"
 vc_post_decor = "⡯⣯|>"
+
 log_channel_id = int(1206424268628561971)
 log_joke_calls = False
 log_vc_creation = False
 log_vc_deletion = False
 
-
-
+ai_channels = [1206888054766440468]
 
 #⣿¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤⣿
 #|--------------Logging Functions-----------|
@@ -233,7 +234,7 @@ async def on_voice_state_update(member, before, after):
         
         guild = bot.get_guild(member.guild.id)
         cat = discord.utils.get(guild.categories, name=vc_creation_category)
-        v_channel = await guild.create_voice_channel(f"{vc_pre_decor}{member.name}{vc_post_decor}", category=cat) 
+        v_channel = await guild.create_voice_channel(f"{vc_pre_decor}{member.display_name}{vc_post_decor}", category=cat) 
         channel = bot.get_channel(int(v_channel.id))
         await member.move_to(channel)
         await log_vc_c(member.name, channel)
@@ -266,11 +267,8 @@ async def on_voice_state_update(member, before, after):
 #⣿▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄⣿
 
 openai.api_key = os.getenv('OPENAI_KEY')
-
 IGNORE_PREFIX = "/"
-CHANNELS = ['1206424226073149470']
 IGNORE_PREFIX = "/"
-CHANNELS = ['655585849806815265', '653821183526961159', '1160127326567276615']
 
 @bot.event
 async def on_message(message):
@@ -279,7 +277,7 @@ async def on_message(message):
         return
     if message.content.startswith(IGNORE_PREFIX):
         return
-    if message.channel.id not in CHANNELS and bot.user.id not in [mention.id for mention in message.mentions]:
+    if message.channel.id not in ai_channels and bot.user.id not in [mention.id for mention in message.mentions]:
         return
 
     await message.channel.trigger_typing()
