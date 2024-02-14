@@ -275,12 +275,17 @@ async def on_message(message):
     templist = []
     if message.author.bot:
         return
-    if message.content.startswith(IGNORE_PREFIX):
+    elif message.content.startswith(IGNORE_PREFIX):
         return
-    if message.channel.id not in ai_channels and bot.user.id not in [mention.id for mention in message.mentions]:
+    elif bot.user.id not in [mention.id for mention in message.mentions]:
         return
+    elif message.channel.id not in ai_channels:
+        return
+    else:
+        pass
 
     await message.channel.trigger_typing()
+
 
     async def send_typing_interval():
         while True:
