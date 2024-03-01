@@ -3,7 +3,7 @@
 ## DEBIAN BASED LINUX ##-----------------------------------------------------
 
 1. run the deb_base_setup.sh in the main directory where the bot files are stored
-2. if dependency installation is complete, move on to the configuration section and fill in channel id needed for th bot
+2. if dependency installation is complete, move on to the configuration section and fill in channel id needed for the bot
 3. add API keys for AI and your discord bot as seen below
 4. run bot with "python3 TigBot_run.py"
 
