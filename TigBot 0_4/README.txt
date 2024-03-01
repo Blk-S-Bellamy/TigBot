@@ -1,6 +1,15 @@
 !! JOKES.DB MUST BE UNZIPPED BEFORE RUNNING THE BOT TO ACCESS THE JOKES !!
 
-install these dependencies in a virtual environment 
+## DEBIAN BASED LINUX ##-----------------------------------------------------
+
+1. run the deb_base_setup.sh in the main directory where the bot files are stored
+2. if dependency installation is complete, move on to the configuration section and fill in channel id needed for th bot
+3. add API keys for AI and your discord bot as seen below
+4. run bot with "python3 TigBot_run.py"
+
+## WINDOWS ##-----------------------------------------------------------------
+
+1. install these dependencies in a virtual environment
 
 pip install openai==0.28
 pip install bs4
@@ -8,12 +17,17 @@ pip install requests
 python3 -m pip install python-dotenv
 pip install asycio
 
-pip install -U py-cord --force-reinstall
-OR::
 pip install py-cord
+OR::
+pip install -U py-cord --force-reinstall
+
+2. configure the bot as seen below
+3. add API keys as seen below
+4. run bot with "python3 TigBot_run.py"
 
 
-then fill in the tigbot config variables:
+## CONFIG VARIABLES AND CONFIGURATION ##----------------------------------------
+
 :CHANNEL ID SECTION:
 8:"bot_status" with the status to be seen after the bots activity "Watching"
 9:"Welcome_Channel_id" with the id of the text channel for welcoming members (not working yet)
@@ -28,13 +42,7 @@ then fill in the tigbot config variables:
 :SERVER CHANNEL LOGGING:
 41:"log_channel_id" the text channel id where logging server (if enabled) is sent
 
-.env setup:
+
+## ENV API KEY SETUP ##----------------------------------------------------------
 DISCORD_TOKEN=<bot_token>
 OPENAI_KEY=<openai_4_token>
-
-then execute TigBot_run.py with:
-
-Linux/Windows
-python TigBot_run.py
-OR:
-python3 TigBot_run.py
