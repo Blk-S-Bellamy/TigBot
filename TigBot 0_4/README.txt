@@ -13,7 +13,7 @@ OR::
 pip install py-cord
 
 
-then fill in the config variables:
+then fill in the tigbot config variables:
 :CHANNEL ID SECTION:
 8:"bot_status" with the status to be seen after the bots activity "Watching"
 9:"Welcome_Channel_id" with the id of the text channel for welcoming members (not working yet)
